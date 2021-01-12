@@ -11,15 +11,26 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1>Recomendador de Vinhos</h1>
-                    <p>Descubra o vinho que mais te agrada:</p>
-                    <!-- <div class="card-group">
-                        <div v-for="" class="card border-success mb-3" style="max-width: 18rem;">
-                            <div class="card-body text-success">
-                                <h5 class="card-title">Success card title</h5>
+                    <h1 class="text-center mb-2 mt-5">Recomendador de Vinhos</h1>
+                    <p class="text-center text-muted">Descubra o vinho que mais te agrada</p>
+                    <div class="row row-cols-2 row-cols-md-5 g-4 mt-4 justify-content-center">
+                        <div v-for="vinho in vinhos" class="col">
+                            <div class="card border-success mb-3" style="max-width: 18rem;">
+                                <div class="card-body text-success">
+                                    <h5 class="card-title text-center">{{ vinho }}</h5>
+                                </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                    <div class="row row-cols-2 row-cols-md-5 g-4 mt-4 justify-content-center">
+                        <div v-for="tom in tons" class="col">
+                            <div class="card border-success mb-3" style="max-width: 18rem;">
+                                <div class="card-body text-success">
+                                    <h5 class="card-title text-center">{{ tom }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,12 +42,16 @@
         var app = new Vue({
             el: '#app',
             data: {
-                info: ""
+                vinhos: [],
+                tons: []
             },
             mounted () {
-                // axios
-                //     .get('/api/categorizar')
-                //     .then(response => (this.info = response.data))
+                axios
+                    .get('/api/vinhos')
+                    .then(response => (this.vinhos = response.data))
+                axios
+                    .get('/api/tons')
+                    .then(response => (this.tons = response.data))
             }
         });
     </script>
