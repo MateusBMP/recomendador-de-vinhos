@@ -9,26 +9,60 @@
 <body>
     <div id="app">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center mb-2 mt-5">Recomendador de Vinhos</h1>
-                    <p class="text-center text-muted">Descubra o vinho que mais te agrada</p>
-                    <div class="row row-cols-2 row-cols-md-5 g-4 mt-4 justify-content-center">
-                        <div v-for="vinho in vinhos" class="col">
-                            <div class="card border-success mb-3" style="max-width: 18rem;">
-                                <div class="card-body text-success">
-                                    <h5 class="card-title text-center">{{ vinho }}</h5>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-12">
+                    <div class="my-5">
+                        <h2 class="mb-1">Recomendador de Vinhos</h2>
+                        <small class="text-muted">Descubra o vinho que mais te agrada</small>
                     </div>
-                    <div class="row row-cols-2 row-cols-md-5 g-4 mt-4 justify-content-center">
-                        <div v-for="tom in tons" class="col">
-                            <div class="card border-success mb-3" style="max-width: 18rem;">
-                                <div class="card-body text-success">
-                                    <h5 class="card-title text-center">{{ tom }}</h5>
-                                </div>
-                            </div>
+                    <div class="mt-3 mb-5">
+                        <h3>Cor preferida</h3>
+                        <div v-for="(value, index) in corPreferida" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cor_preferida" :value="index" v-model="pickedCorPreferida">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Corpo preferido</h3>
+                        <div v-for="(value, index) in corpoPreferido" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="corpo_preferido" :value="index" v-model="pickedCorpoPreferido">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Molho</h3>
+                        <div v-for="(value, index) in molho" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="molho" :value="index" v-model="pickedMolho">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Prato principal</h3>
+                        <div v-for="(value, index) in pratoPrincipal" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="prato_principal" :value="index" v-model="pickedPratoPrincipal">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Sabor</h3>
+                        <div v-for="(value, index) in sabor" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sabor" :value="index" v-model="pickedSabor">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Suavidade preferida</h3>
+                        <div v-for="(value, index) in suavidadePreferida" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="suavidade_preferida" :value="index" v-model="pickedSuavidadePreferida">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Tem molho</h3>
+                        <div v-for="(value, index) in temMolho" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tem_molho" :value="index" v-model="pickedTemMolho">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Tem peru</h3>
+                        <div v-for="(value, index) in temPeru" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tem_peru" :value="index" v-model="pickedTemPeru">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <h3 class="mt-3">Tem vitela</h3>
+                        <div v-for="(value, index) in temVitela" class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tem_vitela" :value="index" v-model="pickedTemVitela">
+                            <label class="form-check-label">{{ value }}</label>
+                        </div>
+                        <div class="mt-3">
+                            <button v-on:click="combinarVinho" type="button" class="btn btn-primary">Combinar vinho</button>
                         </div>
                     </div>
                 </div>
@@ -42,16 +76,44 @@
         var app = new Vue({
             el: '#app',
             data: {
-                vinhos: [],
-                tons: []
+                pickedCorPreferida: null,
+                corPreferida: [],
+                pickedCorpoPreferido: null,
+                corpoPreferido: [],
+                pickedMolho: null,
+                molho: [],
+                pickedPratoPrincipal: null,
+                pratoPrincipal: [],
+                pickedSabor: null,
+                sabor: [],
+                pickedSuavidadePreferida: null,
+                suavidadePreferida: [],
+                pickedTemMolho: null,
+                temMolho: [],
+                pickedTemPeru: null,
+                temPeru: [],
+                pickedTemVitela: null,
+                temVitela: []
+            },
+            methods: {
+                combinarVinho: function(event) {
+
+                }
             },
             mounted () {
                 axios
-                    .get('/api/vinhos')
-                    .then(response => (this.vinhos = response.data))
-                axios
-                    .get('/api/tons')
-                    .then(response => (this.tons = response.data))
+                    .get('/api/perguntas')
+                    .then(response => {
+                        this.corPreferida = response.data.cor_preferida;
+                        this.corpoPreferido = response.data.corpo_preferido;
+                        this.molho = response.data.molho;
+                        this.pratoPrincipal = response.data.prato_principal;
+                        this.sabor = response.data.sabor;
+                        this.suavidadePreferida = response.data.suavidade_preferida;
+                        this.temMolho = response.data.tem_molho;
+                        this.temPeru = response.data.tem_peru;
+                        this.temVitela = response.data.tem_vitela;
+                    });
             }
         });
     </script>
