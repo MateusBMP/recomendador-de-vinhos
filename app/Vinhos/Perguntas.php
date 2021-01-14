@@ -1,7 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Vinhos;
 
+/**
+ * Perguntas ao cliente
+ * 
+ * Objeto com lista de perguntas que podem ser feitas ao cliente para inferir qual o vinho mais 
+ * recomendado a ele. Todo objeto possui um conjunto de valores e um tipo, onde quando for 
+ * "univalorada", deve possuir apenas um valor como resposta, enquanto "multivalorada" permite  
+ * vários valores como resposta.
+ */
 class Perguntas
 {
     public static $aspecto = [

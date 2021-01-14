@@ -3,7 +3,7 @@
 namespace App\Controllers\Api;
 
 use App\Controllers\Api\Controller;
-use App\Perguntas as DataPerguntas;
+use App\Vinhos\Perguntas as DataPerguntas;
 
 class Perguntas extends Controller
 {

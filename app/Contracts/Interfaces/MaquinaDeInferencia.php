@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Contracts\Interfaces;
 
-use App\Contracts\MemoriaDeTrabalho;
+use App\Contracts\Interfaces\BaseDeRegras;
 
 /**
  * Máquina de inferência
@@ -16,8 +16,8 @@ interface MaquinaDeInferencia
     /**
      * Constrói a memória de trabalho do sistema especialista a partir da base de regras.
      * 
-     * @param  BaseDeRegras $br Base de regras do sistema especialista.
-     * @return MemoriaDeTrabalho Memória de trabalho
+     * @param  \App\Contracts\Interfaces\BaseDeRegras $br Base de regras do sistema especialista
+     * @return \App\Contracts\Interfaces\MemoriaDeTrabalho Memória de trabalho
      */
     public function construirMT(BaseDeRegras $br);
 }

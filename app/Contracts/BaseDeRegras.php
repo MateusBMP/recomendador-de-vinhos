@@ -2,34 +2,53 @@
 
 namespace App\Contracts;
 
-use App\Contracts\Fatos;
+use App\Contracts\Interfaces\BaseDeRegras as InterfaceBaseDeRegras;
 
 /**
  * Base de regras
  * 
- * A base de regras de um sistema especialista contém as regras "se-então" e fatos conhecidos de 
- * um sistema especialista.
+ * Base de regras genérica, seguindo o modelo do contrado de base de regras. Possui uma lista de 
+ * fatos e regras.
  */
-interface BaseDeRegras
+class BaseDeRegras implements InterfaceBaseDeRegras
 {
+    /**
+     * @var array Lista de fatos
+     */
+    public $fatos;
+
+    /**
+     * @var array Lista de regras
+     */
+    public $regras;
+
     /**
      * Constrói a base de regras utilizando uma base de fatos.
      * 
-     * @param  Fatos $fatos Fatos do sistema especialista
+     * @param array $fatos Fatos do sistema especialista
+     * @param array $regras Regras do sistema especialista
      */
-    public function __construct(Fatos $fatos);
+    public function __construct(array $fatos, array $regras)
+    {
+        $this->fatos = $fatos;
+        $this->regras = $regras;
+    }
 
     /**
      * Dispara as regras da base de regras, retornando os fatos disparados.
      * 
      * @return array Fatos disparados da base de regras
      */
-    public function disparar();
+    public function disparar()
+    {
+        // Lista de regras disparadas
+        $disparos = [];
 
-    /**
-     * Fatos da base de regras.
-     * 
-     * @return array Lista de fatos
-     */
-    public function fatos();
+        foreach ($this->regras as $regra) {
+            if ($regra->disparar($this->fatos))
+                array_push($disparos, $regra);
+        }
+
+        return $disparos;
+    }
 }
