@@ -1,5 +1,6 @@
 # recomendador-de-vinhos
-Sistema especialista, utilizando o algoritmo genético de Holland, que recomenda vinhos ao usuário
+
+Sistema especialista, utilizando máquina de inferência com encadeamento progressivo, que recomenda vinhos ao usuário.
 
 Para executar o projeto, primeiro instale as dependências Composer:
 
