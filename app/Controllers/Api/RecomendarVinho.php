@@ -10,6 +10,8 @@ class RecomendarVinho extends Controller
 {
     public function data() 
     {
+        print_r(file_get_contents('php://input'));
+
         // Cria a lista de fatos a partir da resposta do cliente no formulário
         $fatos = [
             new Fato("", ""),

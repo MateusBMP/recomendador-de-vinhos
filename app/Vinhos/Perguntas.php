@@ -65,15 +65,15 @@ class Perguntas
         "tipo" => ["univalorada"],
     ];
     public static $tem_molho = [
-        "valores" => ["tem", "não tem"],
+        "valores" => ["sim", "não"],
         "tipo" => ["univalorada"],
     ];
     public static $tem_peru = [
-        "valores" => ["tem", "não tem"],
+        "valores" => ["sim", "não"],
         "tipo" => ["univalorada"],
     ];
     public static $tem_vitela = [
-        "valores" => ["tem", "não tem"],
+        "valores" => ["sim", "não"],
         "tipo" => ["univalorada"],
     ];
     public static $vinho = [

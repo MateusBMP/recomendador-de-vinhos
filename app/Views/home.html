@@ -97,7 +97,19 @@
             },
             methods: {
                 combinarVinho: function(event) {
-                    // code...
+                    axios
+                        .post('api/recomendar-vinho', {
+                            'cor-preferida': this.pickedCorPreferida,
+                            'corpo-preferido': this.pickedCorpoPreferido,
+                            'molho': this.pickedMolho,
+                            'prato-principal': this.pickedPratoPrincipal,
+                            'sabor': this.pickedSabor,
+                            'suavidade-preferida': this.pickedSuavidadePreferida,
+                            'tem-molho': this.pickedTemMolho,
+                            'tem-peru': this.pickedTemPeru,
+                            'tem-vitela': this.pickedTemVitela,
+                        })
+                        .then(response => (console.info(response)));
                 }
             },
             mounted () {
