@@ -10,8 +10,18 @@ use App\Models\Regra;
 
 // Constrói os fatos
 $fatos = [
-    new Fato("A", "verdade", 1), // A(verdade)
-    new Fato("B", "verdade", 2), // B(verdade)
+    new Fato([
+        'nome' => 'A',
+        'valor' => "Verdade",
+    ]), // A(verdade)
+    new Fato([
+        'nome' => 'B',
+        'valor' => "Verdade",
+    ]), // B(verdade)
+    new Fato([
+        'nome' => 'C',
+        'valor' => "Verdade",
+    ]), // C(verdade)
 ];
 
 // Constrói as regras
@@ -19,7 +29,7 @@ $regras = [
     new Regra([ // A(verdade) ^ B(verdade) -> C(verdade)
         $fatos[0],
         $fatos[1]
-    ], new Fato("C", "verdade"), 1)
+    ], $fatos[2])
 ];
 
 // Constrói a base de regras do sistema especialista
@@ -32,8 +42,8 @@ $mi = new EncadeamentoProgressivo();
 $se = new SistemaEspecialista($br, $mi);
 
 // Busca saber se um fato é verdadeiro
-$e_fato = ($se->e_fato(new Fato("C", 'verdade'))) ?  "verdadeiro" : "falso";
-echo "C -> verdade é fato?: $e_fato\n";
+$e_fato = ($se->e_fato($fatos[2])) ?  "verdadeiro" : "falso";
+echo "`C -> verdade` é fato?: $e_fato\n";
 
 // Busca um fato por seu nome
 $busca = $se->buscar("C");
