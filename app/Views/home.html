@@ -10,113 +10,304 @@
     <link rel="manifest" href="/site.webmanifest">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --p-color-carafe: #402220;
+            --p-color-dark-blue: #08122B;
+            --p-color-cream: #F9EFEE;
+            --p-color-marsala: #53001D;
+            --p-bg-color: #f9f8f4;
+            --p-unobtrusive-color: #deddd9;
+            --bs-font-sans-serif: "Bodoni Moda", serif;
+            --bs-font-monospace: "Montserrat", sans-serif;
+        }
+
         .logo-principal {
             width: 120px;
+        }
+
+        .card-bar {
+            background-color: var(--p-color-carafe);
+            height: 0.65em;
+        }
+
+        .separador {
+            border-style: solid;
+            border-width: 1px 0 0;
+            border-color: var(--p-unobtrusive-color);
+        }
+
+        .font-monospace {
+            letter-spacing: 0.25rem;
+        }
+
+        .text-carafe {
+            color: var(--p-color-carafe);
+        }
+        .text-cream {
+            color: var(--p-color-cream);
+        }
+        .text-marsala {
+            color: var(--p-color-marsala);
+        }
+
+        .bg-carafe {
+            background-color: var(--p-color-carafe);
+        }
+
+        body {
+            background-color: var(--p-bg-color);
+        }
+
+        #start-view {
+            background-image: url('/images/vinho2.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #end-view {
+            background-image: url('/images/vinho1.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #overlay-bg-top {
+            background-color: #00000060;
+            background-image: url('/images/vinho4.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 0% 101%;
+        }
+
+        #overlay-bg-bottom {
+            background-color: #00000060;
+            background-image: url('/images/vinho5.svg');
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: 102vw auto;
+            margin-top: -1px;
+        }
+
+        #title-text {
+            min-height: 25em;
+        }
+
+        #rodape-nav {
+            min-height: 12rem;
+        }
+        #rodape-nav-title {
+            color: var(--p-color-cream);
+            font-size: 0.65em;
+            letter-spacing: 0.15rem;
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <div class="container">
-            <div class="row mt-3">
-                <div class="col-md-4 order-md-2 d-flex justify-content-center align-items-center">
-                    <img src="/android-chrome-192x192.png" class="img-fluid mb-3 mb-md-0 logo-principal" alt="...">                    
-                </div>
-                <div class="col-md-8 order-md-1 text-center text-md-start">
-                    <h1 class="mb-3 display-3">Recomendador de vinhos</h1>
-                    <p class="lead mb-4">Descubra o vinho que mais te agrada</p>
-                    <div class="d-grid gap-2 d-md-block">
-                        <a href="#perguntas" class="btn btn-lg btn-primary" role="button">Iniciar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-5">
-                <div class="col px-0">
-                    <div class="card mb-0">
-                        <img src="/images/vinho1.jpeg" class="card-img-top" alt="...">
-                        <div id="perguntas" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item p-2 active">
-                                    <h5 class="card-title">Cor preferida</h5>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="cor_preferida">
-                                            <label class="form-check-label">Branco</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="cor_preferida">
-                                            <label class="form-check-label">Tinto</label>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="start-view" class="col px-0 text-cream">
+                    <div id="overlay-bg-top">
+                        <div id="title-text" class="position-relative">
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <h1 class="display-3">Vinhos</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div id="perguntas" class="container">
+        <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-8 col-12">
-                    <div class="my-5">
-                        <h2 class="mb-1">Recomendador de Vinhos</h2>
-                        <small class="text-muted">Descubra o vinho que mais te agrada</small>
-                    </div>
-                    <div class="mt-3 mb-5">
-                        <h3>Cor preferida</h3>
-                        <div v-for="(value, index) in corPreferida" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="cor_preferida" :value="index" v-model="pickedCorPreferida">
-                            <label class="form-check-label">{{ value }}</label>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4 order-md-2 d-flex justify-content-center align-items-center">
+                            <img src="/android-chrome-192x192.png" class="img-fluid mb-3 mb-md-0 logo-principal" alt="...">                    
                         </div>
-                        <h3 class="mt-3">Corpo preferido</h3>
-                        <div v-for="(value, index) in corpoPreferido" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="corpo_preferido" :value="index" v-model="pickedCorpoPreferido">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Molho</h3>
-                        <div v-for="(value, index) in molho" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="molho" :value="index" v-model="pickedMolho">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Prato principal</h3>
-                        <div v-for="(value, index) in pratoPrincipal" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="prato_principal" :value="index" v-model="pickedPratoPrincipal">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Sabor</h3>
-                        <div v-for="(value, index) in sabor" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="sabor" :value="index" v-model="pickedSabor">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Suavidade preferida</h3>
-                        <div v-for="(value, index) in suavidadePreferida" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="suavidade_preferida" :value="index" v-model="pickedSuavidadePreferida">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Tem molho</h3>
-                        <div v-for="(value, index) in temMolho" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tem_molho" :value="index" v-model="pickedTemMolho">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Tem peru</h3>
-                        <div v-for="(value, index) in temPeru" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tem_peru" :value="index" v-model="pickedTemPeru">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <h3 class="mt-3">Tem vitela</h3>
-                        <div v-for="(value, index) in temVitela" class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tem_vitela" :value="index" v-model="pickedTemVitela">
-                            <label class="form-check-label">{{ value }}</label>
-                        </div>
-                        <div class="mt-3">
-                            <button v-on:click="combinarVinho" type="button" class="btn btn-primary">Combinar vinho</button>
+                        <div class="col-md-8 order-md-1 text-center text-md-start">
+                            <h1 class="mb-3">Recomendador de vinhos</h1>
+                            <p class="mb-4">Respondendo algumas perguntas, saiba qual vinho mais te agradará em sua refeição.</p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="#perguntas" class="btn btn-lg btn-dark" role="button">Iniciar</a>
+                                <a href="https://github.com/MateusBMP/recomendador-de-vinhos" class="btn btn-lg btn-outline-dark" role="button">GitHub</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
+        <div id="perguntas" class="container mt-5">
+            <div class="separador">
+                <h5 class="my-3 font-monospace text-carafe">PERGUNTAS</h5>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="row row-cols-1 g-4">
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Cor preferida <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="cor_preferida">
+                                            <label class="form-check-label">Branco</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="cor_preferida">
+                                            <label class="form-check-label">Tinto</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Suavidade <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <label class="form-check-label">Suave</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <label class="form-check-label">Médio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <label class="form-check-label">Seco</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Corpo preferido <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <label class="form-check-label">Leve</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <label class="form-check-label">Médio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <label class="form-check-label">Encorpado</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Sabor <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <label class="form-check-label">Delicado</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <label class="form-check-label">Médio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <label class="form-check-label">Forte</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Molho <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <label class="form-check-label">Agridoce</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <label class="form-check-label">Creme</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <label class="form-check-label">Tártaro</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <label class="form-check-label">Apimentado</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <label class="form-check-label">Tomate</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Prato principal <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <label class="form-check-label">Peixe</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <label class="form-check-label">Carne</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <label class="form-check-label">Aves</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="#" class="btn btn-dark" role="button">Buscar vinho</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="rodape" class="container-fluid mt-5">
+            <div class="row">
+                <div id="end-view" class="col px-0 text-cream">
+                    <div id="overlay-bg-bottom">
+                        <div id="rodape-nav" class="d-flex flex-column align-items-center justify-content-end">
+                            <a href="https://github.com/MateusBMP/recomendador-de-vinhos" class="text-decoration-none link-light mb-2">GitHub</a>
+                            <div class="nav justify-content-center align-items-end">
+                                <a id="rodape-nav-title" href="#" class="nav-link disabled font-monospace fw-bold" tab-index="-1" aria-disabled="true">2021 &#8226; RECOMENDADOR DE VINHOS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -125,7 +316,7 @@
         var app = new Vue({
             el: '#app',
             data: {
-                perguntas: []
+                selecionados: null
             },
             methods: {
                 combinarVinho: function(event) {
@@ -145,29 +336,7 @@
                 }
             },
             mounted () {
-                axios
-                    .get('/api/perguntas')
-                    .then(response => {
-                        this.perguntas = [
-                            { nome: 'Cor preferida', opcoes: response.data.cor_preferida, selecionado: null, selecionado: null },
-                            { nome: 'Corpo preferido', opcoes: response.data.corpo_preferido, selecionado: null },
-                            { nome: 'Molho', opcoes: response.data.molhos, selecionado: null },
-                            { nome: 'Prato principal', opcoes: response.data.prato_principal, selecionado: null },
-                            { nome: 'Sabor', opcoes: response.data.sabor, selecionado: null },
-                            { nome: 'Suavidade preferida', opcoes: response.data.suavidade_preferida, selecionado: null },
-                            { nome: 'Tem molho', opcoes: response.data.tem_molho, selecionado: null },
-                            { nome: 'Tem peru', opcoes: response.data.tem_peru, selecionado: null },
-                            { nome: 'Tem vitela', opcoes: response.data.tem_vitela, selecionado: null }
-                        ];
-                    });
-
-                    var divPerguntas = document.querySelector('#perguntas');
-                    var carouselPerguntas = new bootstrap.Carousel(divPerguntas, {
-                        interval: false,
-                        keyboard: false,
-                        touch: false,
-                        wrap: false
-                    });
+                // ...
             }
         });
     </script>
