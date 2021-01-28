@@ -5,6 +5,8 @@ namespace App\Vinhos;
 use App\Models\Fato;
 use App\Models\Regra;
 
+use function PHPSTORM_META\map;
+
 /**
  * Regras de vinhos
  * 
@@ -30,60 +32,165 @@ class Regras
      */
     private function base_de_regras()
     {
-        return [
-            // new Regra 1
-            new Fato([
-                "tem molho"=> "sim",
-                "molho"=> "apimentado"
-            ]), new Fato("melhor corpo"=> "encorpado"),
-            // new Regra 2
-            new Fato([
-                "sabor"=> "delicado",
-            ], new Fato("melhor corpo"=> "leve"), 0.80),
-            // new Regra 3
-            new Fato([
-                "sabor"=> "medio",
-            ], new Fato("melhor corpo"=> "leve"), 0.30
-               new Fato("melhor corpo"=> "medio"), 0.60
-               new Fato("melhor corpo"=> "encorpado"), 0.30),
-            // new Regra 4
-            new Fato([
-                "sabor"=> "forte",
-            ], new Fato("melhor corpo"=> "medio"), 0.40
-               new Fato("melhor corpo"=> "encorpado"), 0.80),
-            // new Regra 5
-            new Fato([
-                "tem molho"=> "sim",
-                "molho"=> "creme"
-            ], new Fato("melhor corpo"=> "medio"), 0.40
-               new Fato("melhor corpo"=> "encorpado"), 0.60),
-            // new Regra 6
-            new Fato([
-                "prato principal"=> "carne",
-                "tem vitela"=> "sim"
-            ], new Fato("melhor cor"=> "tinto"), 0.90),
-            // new Regra 7
-            new Fato([
-                "prato principal"=> "aves",
-                "tem peru"=> "sim"
-            ], new Fato("melhor cor"=> "branco"), 0.90
-               new Fato("melhor cor"=> "branco"), 0.30),
-            // new Regra 8
-            new Fato([
-                "prato principal"=> "peixe",
-            ]), new Fato("melhor cor"=> "branco"),
-            // new Regra 9
-            // new Fato([                        # Usa um esquema de "<>", então tirei pq 
-            //     "prato principal"=> "peixe",  # Não tenho como tratar isso agora
-            //     "tem molho"=> "sim",
-            //     "molho"=> "tomate"
-            // ]), new Fato("melhor cor"=> "tinto"),
-            // new Regra 10
-            // new Fato([                         # Parece duplicado da regra 7, mas tem 
-            //     "prato principal"=> "aves"),   # Umas coisas diferentes também (?)
-            //     "tem peru"=> "sim")
-            // ], new Fato("melhor cor"=> "tinto"), 0.80
-            //    new Fato("melhor cor"=> "tinto"), 0.50),
+        // tem_molho(sim) ^ molho(apimentado) -> melhor_corpo(encorpado) cnf 100%
+        $regra_1 = new Regra(
+            [
+                new Fato([ 'nome' => "tem molho", 'valor' => "sim" ]),
+                new Fato([ 'nome' => "molho", 'valor' => "apimentado" ])
+            ], 
+            new Fato([ 'nome' => "melhor corpo", 'valor' => "encorpado" ])
+        );
+
+        // sabor(delicado) -> melhor_corpo(leve) cnf 80%
+        $regra_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'delicado' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'leve', 'probabilidade' => 0.8 ])
+        );
+
+        // sabor(medio) -> melhor_corpo(leve) cnf 30%
+        $regra_3_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'leve', 'probabilidade' => 0.3 ])
+        );
+
+        // sabor(medio) -> melhor_corpo(medio) cnf 60%
+        $regra_3_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'medio', 'probabilidade' => 0.6 ])
+        );
+
+        // sabor(medio) -> melhor_corpo(encorpado) cnf 30%
+        $regra_3_3 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado', 'probabilidade' => 0.3 ])
+        );
+
+        // sabor(forte) -> melhor_corpo(medio) cnf 40%
+        $regra_4_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'forte' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'medio', 'probabilidade' => 0.4 ])
+        );
+
+        // sabor(forte) -> melhor_corpo(encorpado) cnf 80%
+        $regra_4_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'sabor', 'valor' => 'forte' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado', 'probabilidade' => 0.8 ])
+        );
+
+        // tem_molho(sim) ^ molho(creme) -> melhor_corpo(medio) cnf 40%
+        $regra_5_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'creme' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'medio', 'probabilidade' => 0.4 ])
+        );
+
+        // tem_molho(sim) ^ molho(creme) -> melhor_corpo(encorpado) cnf 60%
+        $regra_5_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'creme' ])
+            ],
+            new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado', 'probabilidade' => 0.6 ])
+        );
+
+        // prato_principal(carne) ^ tem_vitela(sim) -> melhor_cor(tinto) cnf 90%
+        $regra_6 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'carne' ]),
+                new Fato([ 'nome' => 'tem vitela', 'valor' => 'sim' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto', 'probabilidade' => 0.9 ])
+        );
+
+        // prato_principal(aves) ^ tem_peru(sim) -> melhor_cor(branco) cnf 90%
+        $regra_7_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'aves' ]),
+                new Fato([ 'nome' => 'tem peru', 'valor' => 'sim' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.9 ])
+        );
+
+        // prato_principal(aves) ^ tem_peru(sim) -> melhor_cor(tinto) cnf 30%
+        $regra_7_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'aves' ]),
+                new Fato([ 'nome' => 'tem peru', 'valor' => 'sim' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto', 'probabilidade' => 0.3 ])
+        );
+
+        // prato_principal(peixe) -> melhor_cor(branco) cnf 100%
+        $regra_8 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'peixe' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco' ])
+        );
+
+        // prato_principal(carne) ^ tem_molho(sim) ^ molho(tomate) -> melhor_cor(tinto) cnf 100%
+        $regra_9_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'carne' ]),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'tomate' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto' ])
+        );
+
+        // prato_principal(aves) ^ tem_molho(sim) ^ molho(tomate) -> melhor_cor(tinto) cnf 100%
+        $regra_9_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'aves' ]),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'tomate' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto' ])
+        );
+
+        // prato_principal(aves) ^ tem_peru(sim) -> melhor_cor(tinto) cnf 80%
+        $regra_10_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'aves' ]),
+                new Fato([ 'nome' => 'tem peru', 'valor' => 'sim' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto', 'probabilidade' => 0.8 ])
+        );
+
+        // prato_principal(aves) ^ tem_peru(sim) -> melhor_cor(branco) cnf 50%
+        $regra_10_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'aves' ]),
+                new Fato([ 'nome' => 'tem peru', 'valor' => 'sim' ])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.5 ])
+        );
+
+        return [ 
+            $regra_1,                           // Regra 1
+            $regra_2,                           // Regra 2
+            $regra_3_1, $regra_3_2, $regra_3_3, // Regra 3
+            $regra_4_1, $regra_4_2,             // Regra 4 
+            $regra_5_1, $regra_5_2,             // Regra 5
+            $regra_6,                           // Regra 6
+            $regra_7_1, $regra_7_2,             // Regra 7
+            $regra_8,                           // Regra 8
+            $regra_9_1, $regra_9_2,             // Regra 9
+            $regra_10_1, $regra_10_2            // Regra 10
             // new Regra 11
             new Fato([
                 "prato principal"=> "desconhecido",
