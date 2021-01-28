@@ -24,6 +24,7 @@ class Regra
     /**
      * @var \App\Models\Fato Novo fato resultante do disparo da regra
      */
+    public $novo_fato;
 
     /**
      * Regra de uma base de regras. Deve receber um índice, uma lista de fatos esperados na regra 

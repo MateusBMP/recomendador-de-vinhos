@@ -59,6 +59,22 @@ class MemoriaDeTrabalho implements InterfaceMemoriaDeTrabalho
         array_push($this->fatos_data, $fato);
     }
 
+    /**
+     * Remove um fato da memória de trabalho. Se nenhum fato for removido, retorna nulo,
+     * se não retornará o fato removido.
+     * 
+     * @param  string $nome_fato  Nome do fato a ser removido
+     * @return \App\Models\Fato|null
+     */
+    public function remover_fato(string $nome_fato)
+    {
+        for ($i = 0; $i < count($this->fatos); $i++)
+            if ($this->fatos[$i]->nome === $nome_fato) 
+                return array_splice($this->fatos_data, $i, 1);
+
+        return null;
+    }
+
     public function __get($p)
     {
         if ($p === "fatos")

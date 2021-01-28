@@ -13,22 +13,31 @@ $fatos = [
     new Fato([
         'nome' => 'A',
         'valor' => "Verdade",
+        'probabilidade' => 0.8
     ]), // A(verdade)
     new Fato([
         'nome' => 'B',
         'valor' => "Verdade",
+        'probabilidade' => 0.8
     ]), // B(verdade)
     new Fato([
         'nome' => 'C',
         'valor' => "Verdade",
+        'probabilidade' => 0.8
     ]), // C(verdade)
 ];
 
 // Constrói as regras
 $regras = [
     new Regra([ // A(verdade) ^ B(verdade) -> C(verdade)
-        $fatos[0],
-        $fatos[1]
+        new Fato([
+            'nome' => 'A',
+            'valor' => "Verdade"
+        ]),
+        new Fato([
+            'nome' => 'B',
+            'valor' => "Verdade"
+        ])
     ], $fatos[2])
 ];
 
@@ -47,4 +56,4 @@ echo "`C -> verdade` é fato?: $e_fato\n";
 
 // Busca um fato por seu nome
 $busca = $se->buscar("C");
-echo "Buscar C: {$busca->valor}\n";
+echo "Buscar C: {$busca->valor} (cnf {$busca->probabilidade})\n";
