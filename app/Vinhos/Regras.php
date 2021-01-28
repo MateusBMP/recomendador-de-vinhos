@@ -5,8 +5,6 @@ namespace App\Vinhos;
 use App\Models\Fato;
 use App\Models\Regra;
 
-use function PHPSTORM_META\map;
-
 /**
  * Regras de vinhos
  * 

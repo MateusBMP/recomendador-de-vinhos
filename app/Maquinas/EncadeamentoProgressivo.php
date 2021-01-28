@@ -5,7 +5,6 @@ namespace App\Maquinas;
 use App\Contracts\Interfaces\BaseDeRegras;
 use App\Contracts\Interfaces\MaquinaDeInferencia;
 use App\Contracts\MemoriaDeTrabalho;
-use App\Models\Fato;
 use App\Models\Regra;
 
 /**
@@ -41,12 +40,8 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
             $novos_fatos = $this->inferir_novos_fatos($mt, $br);
     
             // Se não houverem novos fatos, para a execução
-            if (count($novos_fatos) === 0) 
+            if ($novos_fatos === false) 
                 break;
-    
-            // Havendo novos fatos, insere-os na memória de trabalho.
-            foreach ($novos_fatos as $novo_fato)
-                $mt->adicionar_fato($novo_fato);
         } while (0);
 
         // Retorna a memória de trabalho
@@ -55,18 +50,15 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
 
     /**
      * Infere novos fatos a partir da lista de fatos presentes na memória de trabalho e da base de 
-     * regras original. Retorna uma lista com os novos fatos inferidos, enquanto registra as 
-     * regras que forem disparadas para não serem disparadas novamente.
+     * regras original. Retorna um booleano informando se novos fatos foram inferidos, enquanto 
+     * registra as regras que forem disparadas para não serem disparadas novamente.
      * 
      * @param  \App\Contracts\Interfaces\MemoriaDeTrabalho $mt Memória de trabalho
      * @param  \App\Contracts\Interfaces\BaseDeRegras $br Base de regras
-     * @return array Novos fatos inferidos
+     * @return bool Novo fato registrado
      */
-    public function inferir_novos_fatos(MemoriaDeTrabalho $mt, BaseDeRegras $br)
+    public function inferir_novos_fatos(MemoriaDeTrabalho &$mt, BaseDeRegras $br)
     {
-        // Cria a lista vazia de novos fatos
-        $novos_fatos = [];
-
         // Atualiza os fatos da base de regras com os fatos da memória de trabalho
         $br->fatos = $mt->fatos;
 
@@ -76,15 +68,18 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
         // Para cada disparo, se regra disparada não havia sido disparada anteriormente, registra 
         // o fato na lista de novos fatos e registra a regra disparada. Em seguida, regula o grau 
         // de probabilidade dos fatos
+        $novo_fato_registrado = false;
         foreach ($disparos as $disparo) {
-            if (!$this->regra_disparada_anteriormente($disparo))
-                $this->registrar_novo_fato($novos_fatos, $disparo);
+            if (!$this->regra_disparada_anteriormente($disparo)) {
+                $this->registrar_novo_fato($mt, $disparo);
+                $novo_fato_registrado = true;
+            }
 
             $this->regula_grau_de_probabilidade($mt, $disparo);
         }
 
-        // Retorna a lista de novos fatos
-        return $novos_fatos;
+        // Retorna se um novo fato foi registrado
+        return $novo_fato_registrado;
     }
 
     /**
@@ -103,14 +98,18 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
     }
 
     /**
-     * Registra um novo fato na lista de novos fatos a partir de uma regra disparada.
+     * Registra um novo fato na memória de trabalho a partir de uma regra disparada. Depois 
+     * registra a regra disparada na lista de regras disparadas
      * 
-     * @param  array $novos_fatos  Lista de novos fatos
+     * @param  \App\Contracts\Interfaces\MemoriaDeTrabalho $mt Memória de trabalho
      * @param  \App\Models\Regra $disparo  Regra disparada
      */
-    public function registrar_novo_fato(array &$novos_fatos, Regra $disparo)
+    public function registrar_novo_fato(MemoriaDeTrabalho &$mt, Regra $disparo)
     {
-        array_push($novos_fatos, $disparo->novo_fato);
+        // Adiciona fato na memória de trabalho
+        $mt->adicionar_fato($disparo->novo_fato);
+
+        // Adiciona disparo na lista de regras disparadas
         array_push($this->regras_disparadas, $disparo);
     }
 
@@ -123,12 +122,12 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
     public function regula_grau_de_probabilidade(MemoriaDeTrabalho &$mt, Regra $disparo)
     {
         // Recupera o fato da memória de trabalho
-        $fato_a_ser_regulado = $mt->fato($disparo->novo_fato->nome);
+        $fato_a_ser_regulado = $mt->fato($disparo->novo_fato->nome, $disparo->novo_fato->valor)[0];
 
         // Recupera os fatos que disparam a regra
         $fatos_disparadores = [];
         foreach ($disparo->fatos as $regra)
-            array_push($fatos_disparadores, $mt->fato($regra->nome));
+            array_push($fatos_disparadores, $mt->fato($regra->nome, $regra->valor)[0]);
 
         // Calcula o novo grau de probabilidade usando a média ponderada das probabilidades dos 
         // fatos disparadores em relação a probabilidade do fato disparado na regra.

@@ -37,7 +37,7 @@ class SistemaEspecialista implements ContractsSistemaEspecialista
      * memória de trabalho. Deve fornecer o objeto Fato buscado.
      * 
      * @param  \App\Models\Fato $fato Fato buscado no sistema especialista
-     * @return \App\Models\Fato|false
+     * @return bool
      */
     public function e_fato(Fato $pergunta)
     {
@@ -45,14 +45,33 @@ class SistemaEspecialista implements ContractsSistemaEspecialista
     }
 
     /**
-     * Busca um valor para um dado buscado no sistema especialista. Caso não seja encontrado, 
-     * retorna um objeto nulo.
+     * Retorna o grau de probabilidade, em decimal, de um fato buscado. Caso o fato não esteja
+     * presente na memória de trabalho, retorna o grau de probabilidade igual a 0.
      * 
-     * @param  string $fato  Fato buscado no sistema especialista
-     * @return \App\Models\Fato|null
+     * @param  \App\Models\Fato $fato Fato buscado no sistema especialista
+     * @return double Probabilidade do fato buscado
      */
-    public function buscar(string $fato)
+    public function probabilidade(Fato $pergunta)
     {
-        return $this->mt->fato($fato);
+        if (!$this->e_fato($pergunta))
+            return doubleval(0);
+
+        $fato_buscado = $this->buscar($pergunta->nome, $pergunta->valor)[0];
+
+        return doubleval($fato_buscado->probabilidade);
+    }
+
+    /**
+     * Busca um valor para um dado buscado no sistema especialista. Retorna a lista de fatos
+     * encontrados que competem aos parâmetros buscados ou uma lista vazia de fatos, caso 
+     * nenhum seja encontrado. Pode buscar um fato pelo nome e, opcionalmente, pelo valor.
+     * 
+     * @param  string $nome_fato   Nome do fato buscado no sistema especialista
+     * @param  string ?$valor_fato Valor do fato buscado no sistema especialista
+     * @return array<\App\Models\Fato>
+     */
+    public function buscar(string $nome_fato, string $valor_fato = "")
+    {
+        return $this->mt->fato($nome_fato, $valor_fato);
     }
 }

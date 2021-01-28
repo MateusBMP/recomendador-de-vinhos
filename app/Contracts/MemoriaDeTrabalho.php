@@ -34,19 +34,18 @@ class MemoriaDeTrabalho implements InterfaceMemoriaDeTrabalho
     }
 
     /**
-     * Busca um fato pelo seu nome na lista de fatos da memória de trabalho. Caso não seja 
-     * encontrado, retorna um objeto nulo.
+     * Busca um fato pelo seu nome e, opcionalmente, pelo valor na lista de fatos da memória de 
+     * trabalho. Caso não seja encontrado, retorna um objeto vazio.
      * 
-     * @param  string Fato buscado
-     * @return \App\Models\Fato|null
+     * @param  string $nome_fato   Nome do fato buscado
+     * @param  string ?$valor_fato Valor do fato buscado
+     * @return array<\App\Models\Fato>
      */
-    public function fato(string $nome_fato)
+    public function fato(string $nome_fato, string $valor_fato = "")
     {
-        foreach ($this->fatos as $fato) 
-            if ($fato->nome === $nome_fato) 
-                return $fato;
-
-        return null;
+        return ($valor_fato === "") ? 
+            $this->buscar_fato_por_nome($nome_fato) : 
+            $this->buscar_fato_por_nome_e_valor($nome_fato, $valor_fato);
     }
 
     /**
@@ -91,5 +90,42 @@ class MemoriaDeTrabalho implements InterfaceMemoriaDeTrabalho
     public function fatos()
     {
         return $this->fatos_data;
+    }
+
+    /**
+     * Busca um fato na lista de fatos pelo seu nome, voltando a lista de fatos encontrados. Se 
+     * não encontrar nenhum fato, retorna uma lista vazia.
+     * 
+     * @param  string $nome_fato   Nome do fato buscado
+     * @return array<\App\Models\Fato>
+     */
+    private function buscar_fato_por_nome(string $nome_fato)
+    {
+        $fatos_encontrados = [];
+
+        foreach ($this->fatos as $fato) 
+            if ($fato->nome === $nome_fato ) 
+                array_push($fatos_encontrados, $fato);
+
+        return $fatos_encontrados;
+    }
+
+    /**
+     * Busca um fato na lista de fatos pelo seu nome e valor, voltando a lista de fatos  
+     * encontrados. Se não encontrar nenhum fato, retorna uma lista vazia.
+     * 
+     * @param  string $nome_fato   Nome do fato buscado
+     * @param  string ?$valor_fato Valor do fato buscado
+     * @return array<\App\Models\Fato>
+     */
+    private function buscar_fato_por_nome_e_valor(string $nome_fato, string $valor_fato)
+    {
+        $fatos_encontrados = [];
+
+        foreach ($this->fatos as $fato) 
+            if ($fato->nome === $nome_fato && $fato->valor === $valor_fato) 
+                array_push($fatos_encontrados, $fato);
+
+        return $fatos_encontrados;
     }
 }

@@ -10,35 +10,19 @@ use App\Models\Regra;
 
 // Constrói os fatos
 $fatos = [
-    new Fato([
-        'nome' => 'A',
-        'valor' => "Verdade",
-        'probabilidade' => 0.8
-    ]), // A(verdade)
-    new Fato([
-        'nome' => 'B',
-        'valor' => "Verdade",
-        'probabilidade' => 0.8
-    ]), // B(verdade)
-    new Fato([
-        'nome' => 'C',
-        'valor' => "Verdade",
-        'probabilidade' => 0.8
-    ]), // C(verdade)
+    new Fato([ 'nome' => 'A', 'valor' => "Verdade", 'probabilidade' => 0.8 ]),
+    new Fato([ 'nome' => 'B', 'valor' => "Verdade", 'probabilidade' => 0.8 ])
 ];
 
 // Constrói as regras
 $regras = [
-    new Regra([ // A(verdade) ^ B(verdade) -> C(verdade)
-        new Fato([
-            'nome' => 'A',
-            'valor' => "Verdade"
-        ]),
-        new Fato([
-            'nome' => 'B',
-            'valor' => "Verdade"
-        ])
-    ], $fatos[2])
+    new Regra( // A(verdade) ^ B(verdade) -> C(verdade) cnf 80%
+        [
+            new Fato([ 'nome' => 'A', 'valor' => "Verdade" ]),
+            new Fato([ 'nome' => 'B', 'valor' => "Verdade" ])
+        ],
+        new Fato([ 'nome' => 'C', 'valor' => "Verdade", 'probabilidade' => 0.8 ])
+    )
 ];
 
 // Constrói a base de regras do sistema especialista
@@ -51,9 +35,9 @@ $mi = new EncadeamentoProgressivo();
 $se = new SistemaEspecialista($br, $mi);
 
 // Busca saber se um fato é verdadeiro
-$e_fato = ($se->e_fato($fatos[2])) ?  "verdadeiro" : "falso";
+$e_fato = ($se->e_fato(new Fato([ 'nome' => 'C', 'valor' => "Verdade" ]))) ?  "verdadeiro" : "falso";
 echo "`C -> verdade` é fato?: $e_fato\n";
 
 // Busca um fato por seu nome
-$busca = $se->buscar("C");
+$busca = $se->buscar("C")[0];
 echo "Buscar C: {$busca->valor} (cnf {$busca->probabilidade})\n";
