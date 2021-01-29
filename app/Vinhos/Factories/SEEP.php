@@ -45,9 +45,9 @@ class SEEP
     {
         $melhor_vinho = $this->se->melhor_vinho();
 
-        if ($melhor_vinho === null)
+        if (count($melhor_vinho) === 0)
             return "";
 
-        return $melhor_vinho->valor;
+        return $melhor_vinho[0]->valor;
     }
 }
