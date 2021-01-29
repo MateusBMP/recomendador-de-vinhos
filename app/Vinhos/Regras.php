@@ -177,65 +177,85 @@ class Regras
             ],
             new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.5 ])
         );
+
+        // prato_principal(desconhecido) ^ tem_molho(sim) ^ molho(sim) -> melhor_cor)(branco) CNF 40%
         $regra_11 = new Regra(
             [
                 new Fato([ 'nome' => 'prato principal', 'valor' => 'desconhecido' ]),
-                new Fato([ 'nome' => 'molho', 'valor' => 'sim']),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim']),
                 new Fato([ 'nome' => 'molho', 'valor' => ' creme'])
             ],
             new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.40])
         );
+
+        // tem_molho(sim) ^ molho(agridoce) -> melhor_suavidade(suave) cnf 90%
         $regra_12_1 = new Regra(
             [
-                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
                 new Fato([ 'nome' => 'molho', 'valor' => 'agridoce'])
             ],
             new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave', 'probabilidade' => 0.90])
         );
+
+        // tem_molho(sim) ^ molho(agridoce) -> melhor_suavidade(medio) cnf 40%
         $regra_12_2 = new Regra(
             [
-                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
                 new Fato([ 'nome' => 'molho', 'valor' => 'agridoce' ])
             ],
             new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'medio', 'probabilidade' => 0.4])
         );
+
+        // tem_molho(sim) ^ molho(apimentado) -> aspecto(condimentado) cnf 100%
         $regra_13 = new Regra(
             [
-                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'tem molho', 'valor' => 'sim' ]),
                 new Fato([ 'nome' => 'molho', 'valor' => 'apimentado' ])
             ],
             new Fato([ 'nome' => 'aspecto', 'valor' => 'condimentado'])
         );
+
+        // melhor_corpo(leve) -> corpo_recomendado(medio) cnf 100%
         $regra_14 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor corpo', 'valor' => 'leve' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // melhor_corpo(medio) -> corpo_recomendado(medio) cnf 100%
         $regra_15 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor corpo', 'valor' => 'medio' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // melhor_corpo(encorpado) -> corpo_recomendado cnf 100%
         $regra_16 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado'])
         );
+
+        // corpo_preferido(leve) -> corpo_recomendado(leve) cnf 20%
         $regra_17 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve', 'probabilidade' => 0.20])
         );
+
+        // corpo preferido(medio) -> corpo_recomendado(medio) cnf 20%
         $regra_18 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'medio' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio', 'probabilidade' => 0.20])
         );
+
+        // corpo_preferido(encorpado) ^ melhor_corpo(encorpado) -> corpo_recomendado(encorpado) cnf 20%
         $regra_19 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
@@ -243,6 +263,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado', 'probabilidade' => 0.20])
         );
+
+        // corpo_preferido(leve) ^ melhor_corpo(encorpado) -> corpo_recomendado(medio) cnf 100%
         $regra_20 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
@@ -250,6 +272,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // corpo_preferido(encorpado) ^ melhor_corpo(leve) -> corpo_recomendado(medio) cnf 100%
         $regra_21 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
@@ -257,6 +281,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // corpo_preferido(leve) ^ melhor_corpo(desconhecido) -> corpo_recomendado(leve) cnf 100%
         $regra_22 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
@@ -264,6 +290,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve'])
         );
+
+        // corpo_preferido(medio) ^ melhor_corpo(desconhecido) -> corpo_recomendado(medio)
         $regra_23 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'medio' ]),
@@ -271,6 +299,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // corpo_preferido(encorpado) 
         $regra_24 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
@@ -603,62 +633,62 @@ class Regras
         );
 
         return [ 
-            $regra_1,                           // Regra 1
-            $regra_2,                           // Regra 2
-            $regra_3_1, $regra_3_2, $regra_3_3, // Regra 3
-            $regra_4_1, $regra_4_2,             // Regra 4 
-            $regra_5_1, $regra_5_2,             // Regra 5
-            $regra_6,                           // Regra 6
-            $regra_7_1, $regra_7_2,             // Regra 7
-            $regra_8,                           // Regra 8
-            $regra_9_1, $regra_9_2,             // Regra 9
-            $regra_10_1, $regra_10_2            // Regra 10
-            $regra_11,                          // Regra
-            $regra_12_1, $regra_12_2            // Regra
-            $regra_13,                          // Regra
-            $regra_14,                            // Regra
-            $regra_15,                            // Regra
-            $regra_16,                            // Regra
-            $regra_17,                            // Regra
-            $regra_18,                            // Regra
-            $regra_19,                            // Regra
-            $regra_20,                            // Regra
-            $regra_21,                            // Regra
-            $regra_22,                            // Regra
-            $regra_23,                            // Regra
-            $regra_24,                            // Regra
-            $regra_25,                            // Regra
-            $regra_26,                            // Regra
-            $regra_27,                            // Regra
-            $regra_28,                            // Regra
-            $regra_29,                            // Regra
-            $regra_30,                            // Regra
-            $regra_31,                            // Regra
-            $regra_32_1, $regra_32_2                 // Regra
-            $regra_33,                            // Regra
-            $regra_34,                            // Regra
-            $regra_35,                            // Regra
-            $regra_36,                            // Regra
-            $regra_37,                            // Regra
-            $regra_38,                            // Regra
-            $regra_39,                            // Regra
-            $regra_40,                            // Regra
-            $regra_41,                            // Regra
-            $regra_42,                            // Regra
-            $regra_43,                                          // Regra
-            $regra_44,                                          // Regra
-            $regra_45_1, $regra_45_2                            // Regra
-            $regra_46_1, $regra_46_2                            // Regra
-            $regra_47_1, $regra_47_2                            // Regra
-            $regra_48_1, $regra_48_2, $regra_48_3, $regra_48_4  // Regra
-            $regra_49_1, $regra_49_2                            // Regra
-            $regra_50_1, $regra_50_2, $regra_50_3, $regra_50_4  // Regra
-            $regra_51,                                          // Regra
-            $regra_52,   $regra_50_2                            // Regra
-            $regra_53,                                          // Regra
-            $regra_54,   $regra_50_2                            // Regra
-            $regra_55,                                          // Regra
-            $regra_56,                                          // Regra
+            $regra_1,                                           // Regra 1
+            $regra_2,                                           // Regra 2
+            $regra_3_1, $regra_3_2, $regra_3_3,                 // Regra 3
+            $regra_4_1, $regra_4_2,                             // Regra 4 
+            $regra_5_1, $regra_5_2,                             // Regra 5
+            $regra_6,                                           // Regra 6
+            $regra_7_1, $regra_7_2,                             // Regra 7
+            $regra_8,                                           // Regra 8
+            $regra_9_1, $regra_9_2,                             // Regra 9
+            $regra_10_1, $regra_10_2,                            // Regra 10
+            $regra_11,                                          // Regra 11
+            $regra_12_1, $regra_12_2,                            // Regra 12
+            $regra_13,                                          // Regra 13
+            $regra_14,                                          // Regra 14
+            $regra_15,                                          // Regra 15
+            $regra_16,                                          // Regra 16
+            $regra_17,                                          // Regra 17
+            $regra_18,                                          // Regra 18
+            $regra_19,                                          // Regra 19
+            $regra_20,                                          // Regra 20
+            $regra_21,                                          // Regra 21
+            $regra_22,                                          // Regra 22
+            $regra_23,                                          // Regra 23
+            $regra_24,                                          // Regra 24
+            $regra_25,                                          // Regra 25
+            $regra_26,                                          // Regra 26
+            $regra_27,                                          // Regra 27
+            $regra_28,                                          // Regra 28
+            $regra_29,                                          // Regra 29
+            $regra_30,                                          // Regra 30
+            $regra_31,                                          // Regra 31
+            $regra_32_1, $regra_32_2,                            // Regra 32
+            $regra_33,                                          // Regra 33
+            $regra_34,                                          // Regra 34
+            $regra_35,                                          // Regra 35
+            $regra_36,                                          // Regra 36
+            $regra_37,                                          // Regra 37
+            $regra_38,                                          // Regra 38
+            $regra_39,                                          // Regra 39
+            $regra_40,                                          // Regra 40
+            $regra_41,                                          // Regra 41
+            $regra_42,                                          // Regra 42
+            $regra_43,                                          // Regra 43
+            $regra_44,                                          // Regra 44
+            $regra_45_1, $regra_45_2,                            // Regra 45
+            $regra_46_1, $regra_46_2,                           // Regra 46
+            $regra_47_1, $regra_47_2,                            // Regra 47
+            $regra_48_1, $regra_48_2, $regra_48_3, $regra_48_4,  // Regra 48
+            $regra_49_1, $regra_49_2,                            // Regra 49
+            $regra_50_1, $regra_50_2, $regra_50_3, $regra_50_4,  // Regra 50
+            $regra_51,                                          // Regra 51
+            $regra_52_1,   $regra_52_2,                            // Regra 52
+            $regra_53,                                          // Regra 53
+            $regra_54_1,   $regra_54_2,                            // Regra 54
+            $regra_55,                                          // Regra 55
+            $regra_56,                                          // Regra 56
  
         ];
     }
