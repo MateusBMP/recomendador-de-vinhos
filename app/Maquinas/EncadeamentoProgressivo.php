@@ -42,7 +42,7 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
             // Se não houverem novos fatos, para a execução
             if ($novos_fatos === false) 
                 break;
-        } while (0);
+        } while (true);
 
         // Retorna a memória de trabalho
         return $mt;
@@ -72,10 +72,9 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
         foreach ($disparos as $disparo) {
             if (!$this->regra_disparada_anteriormente($disparo)) {
                 $this->registrar_novo_fato($mt, $disparo);
+                $this->regula_grau_de_probabilidade($mt, $disparo);
                 $novo_fato_registrado = true;
             }
-
-            $this->regula_grau_de_probabilidade($mt, $disparo);
         }
 
         // Retorna se um novo fato foi registrado
@@ -149,7 +148,7 @@ class EncadeamentoProgressivo implements MaquinaDeInferencia
         $novo_grau_de_probabilidade = doubleval($novo_grau_de_probabilidade);
 
         // Remove o fato e adiciona o novo fato com o grau de probabilidade ajustado
-        $mt->remover_fato($fato_a_ser_regulado->nome);
+        $mt->remover_fato($fato_a_ser_regulado->nome, $fato_a_ser_regulado->valor);
 
         $fato_a_ser_regulado->probabilidade = $novo_grau_de_probabilidade;
         $mt->adicionar_fato($fato_a_ser_regulado);

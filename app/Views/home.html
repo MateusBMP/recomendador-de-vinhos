@@ -153,7 +153,7 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Cor preferida <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">Você geralmente prefere vinho branco ou tinto? <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="branco" v-model="corPreferida">
@@ -171,29 +171,7 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Suavidade <span class="text-marsala small align-top">*</span></p>
-                                    <div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="suave" v-model="suavidade">
-                                            <label class="form-check-label">Suave</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="medio" v-model="suavidade">
-                                            <label class="form-check-label">Médio</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" value="seco" v-model="suavidade">
-                                            <label class="form-check-label">Seco</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card rounded-3">
-                                <div class="card-img-top card-bar"></div>
-                                <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Corpo preferido <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">Você geralmente prefere vinho leve, médio ou encorpado? <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="leve" v-model="corpoPreferido">
@@ -215,29 +193,7 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Sabor <span class="text-marsala small align-top">*</span></p>
-                                    <div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="delicado" v-model="sabor">
-                                            <label class="form-check-label">Delicado</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="medio" v-model="sabor">
-                                            <label class="form-check-label">Médio</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="forte" v-model="sabor">
-                                            <label class="form-check-label">Forte</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card rounded-3">
-                                <div class="card-img-top card-bar"></div>
-                                <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Molho</p>
+                                    <p class="card-title mb-3 fw-bold">Que tipo de molho é usado na refeição?</p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="agridoce" v-model="molho">
@@ -267,7 +223,7 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Prato principal <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">Qual o prato principal da refeição? <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="peixe" v-model="pratoPrincipal">
@@ -289,7 +245,51 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Tem peru <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">O sabor da refeição é delicado, médio ou forte? <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="delicado" v-model="sabor">
+                                            <label class="form-check-label">Delicado</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="medio" v-model="sabor">
+                                            <label class="form-check-label">Médio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="forte" v-model="sabor">
+                                            <label class="form-check-label">Forte</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Você geralmente prefere vinho seco, médio ou suave? <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="suave" v-model="suavidade">
+                                            <label class="form-check-label">Suave</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="medio" v-model="suavidade">
+                                            <label class="form-check-label">Médio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="seco" v-model="suavidade">
+                                            <label class="form-check-label">Seco</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">A refeição inclui carne de peru? <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="sim" v-model="temPeru">
@@ -307,7 +307,7 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Tem vitela <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">A refeição inclui carne de vitela? <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" value="sim" v-model="temVitela">
@@ -367,7 +367,7 @@
             },
             computed: {
                 temMolho: function () {
-                    return (this.molho.length > 0);
+                    return (this.molho.length > 0) ? "sim" : "nao";
                 }
             },
             methods: {

@@ -15,10 +15,15 @@ class SistemaEspecialista extends ContractSistemaEspecialista
     /**
      * Pergunta qual o melhor vinho a partir do que o cliente informar como fato na base de regras.
      * 
-     * @return \App\Models\Fato|null
+     * @return \App\Models\Fato
      */
     public function melhor_vinho()
     {
-        return $this->buscar("vinho");
+        $melhor_vinho = $this->buscar("vinho");
+
+        if (count($melhor_vinho) === 0)
+            return "";
+
+        return $melhor_vinho[0];
     }
 }

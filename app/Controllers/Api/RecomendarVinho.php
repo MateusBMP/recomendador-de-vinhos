@@ -10,7 +10,7 @@ class RecomendarVinho extends Controller
 {
     public function data() 
     {
-        $json_data = json_decode(file_get_contents('php://input'));
+        $json_data = json_decode(file_get_contents('php://input'), true);
 
         // Cria a lista de fatos a partir da resposta do cliente no formulário
         $fatos = [];
@@ -40,9 +40,13 @@ class RecomendarVinho extends Controller
         // cliente ao formulário
         $se = new SistemaEspecialistaEmVinhos($fatos);
 
+        // Encontra o melhor vinho
+        $mv = $se->melhor_vinho();
+
         // Devolve o melhor vinho
         return [
-            'melhor-vinho' => $se->melhor_vinho()
+            'melhor-vinho' => $mv->valor,
+            'confiabilidade' => $mv->probabilidade
         ];
     }
 }
