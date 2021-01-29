@@ -177,6 +177,430 @@ class Regras
             ],
             new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.5 ])
         );
+        $regra_11 = new Regra(
+            [
+                new Fato([ 'nome' => 'prato principal', 'valor' => 'desconhecido' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'sim']),
+                new Fato([ 'nome' => 'molho', 'valor' => ' creme'])
+            ],
+            new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco', 'probabilidade' => 0.40])
+        );
+        $regra_12_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'agridoce'])
+            ],
+            new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave', 'probabilidade' => 0.90])
+        );
+        $regra_12_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'agridoce' ])
+            ],
+            new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'medio', 'probabilidade' => 0.4])
+        );
+        $regra_13 = new Regra(
+            [
+                new Fato([ 'nome' => 'molho', 'valor' => 'sim' ]),
+                new Fato([ 'nome' => 'molho', 'valor' => 'apimentado' ])
+            ],
+            new Fato([ 'nome' => 'aspecto', 'valor' => 'condimentado'])
+        );
+        $regra_14 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'leve' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_15 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'medio' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_16 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado'])
+        );
+        $regra_17 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve', 'probabilidade' => 0.20])
+        );
+        $regra_18 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'medio' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio', 'probabilidade' => 0.20])
+        );
+        $regra_19 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado', 'probabilidade' => 0.20])
+        );
+        $regra_20 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'encorpado' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_21 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'leve' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_22 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve'])
+        );
+        $regra_23 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_24 = new Regra(
+            [
+                new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado'])
+        );
+        $regra_25 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor corpo', 'valor' => 'desconhecido' ]),
+            ],
+            new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
+        );
+        $regra_26 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto' ]),
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto'])
+        );
+        $regra_27 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco' ]),
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco'])
+        );
+        $regra_28 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto' ])
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto', 'probabilidade' => 0.20])
+        );
+        $regra_29 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco' ])
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco', 'probabilidade' => 0.20])
+        );
+        $regra_30 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto'])
+        );
+        $regra_31 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'melhor cor', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco'])
+        );
+        $regra_32_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'desconhecido' ]),
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco', 'probabilidade' => 0.50])
+        );
+        $regra_32_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor preferida', 'valor' => 'desconhecido' ]),
+            ],
+            new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto', 'probabilidade' => 0.50])
+        );
+        $regra_33 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade', 'valor' => 'seco' ]),
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco'])
+        );
+        $regra_34 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade', 'valor' => 'medio' ]),
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
+        );
+        $regra_35 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave' ]),
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave'])
+        );
+        $regra_36 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'desconhecido' ]),
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
+        );
+        $regra_37 = new Regra(
+            [
+                new Fato([ 'nome' => 'çmelhor suavidade', 'valor' => 'seco' ]),
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco'])
+        );
+        $regra_38 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio', 'probabilidade' => 0.20])
+        );
+        $regra_39 = new Regra(
+            [
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave' ]),
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'suave recomendada', 'valor' => 'suave', 'probabilidade' => 0.20])
+        );
+        $regra_40 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'seco' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco' ])
+        );
+        $regra_41 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
+        );
+        $regra_42 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'suave' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'desconhecido' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave'])
+        );
+        $regra_43 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade prederida', 'valor' => 'seco' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
+        );
+        $regra_44 = new Regra(
+            [
+                new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'suave' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
+        );
+        $regra_45_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada ', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Gamay'])
+        );
+        $regra_45_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Gamay'])
+        );
+        $regra_46_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chablis'])
+        );
+        $regra_46_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chablis'])
+        );
+        $regra_47_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Sauvingnon Blanc'])
+        );
+        $regra_47_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Sauvingnon'])
+        );
+        $regra_48_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chardonnay'])
+        );
+        $regra_48_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => ' suavidade recomendada', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => ' Chardonnay'])
+        );
+        $regra_48_3 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'cor recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chardonnay'])
+        );
+        $regra_48_4 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chardonnay'])
+        );
+        $regra_49_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Soave'])
+        );
+        $regra_49_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Soave'])
+        );
+        $regra_50_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Riesling'])
+        );
+        $regra_50_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Riesling'])
+        );
+        $regra_50_3 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Riesling'])
+        );
+        $regra_50_4 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidadade recomendada', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Riesling'])
+        );
+        $regra_51 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado' ]),
+                new Fato([ 'nome' => 'aspecto', 'valor' => 'condimentado' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Geverztraminer'])
+        );
+        $regra_52_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chenin Blanc'])
+        );
+        $regra_52_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Chenin Blanc'])
+        );
+        $regra_53 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'leve' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Valpolicella'])
+        );
+        $regra_54_1 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Carbenet Sauvignon'])
+        );
+        $regra_54_2 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Zinfandel'])
+        );
+        $regra_55 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio' ]),
+                new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Pinot Noir'])
+        );
+        $regra_56 = new Regra(
+            [
+                new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto' ]),
+                new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado' ])
+            ],
+            new Fato([ 'nome' => 'vinho', 'valor' => 'Burgundy'])
+        );
 
         return [ 
             $regra_1,                           // Regra 1
@@ -189,247 +613,53 @@ class Regras
             $regra_8,                           // Regra 8
             $regra_9_1, $regra_9_2,             // Regra 9
             $regra_10_1, $regra_10_2            // Regra 10
-            // new Regra 11
-            new Fato([
-                "prato principal"=> "desconhecido",
-                "tem molho"=> "sim",
-                "molho"=> "creme"
-            ], new Fato("melhor cor"=> "branco"), 0.40),
-            // new Regra 12
-            new Fato([
-                "tem molho"=> "sim",
-                "molho"=> "agridoce"
-            ], new Fato("melhor suavidade"=> "suave"), 0.90
-               new Fato("melhor suavidade"=> "medio"), 0.40),
-            // new Regra 13
-            new Fato([
-                "tem molho"=> "sim",
-                "molho"=> "apimentado"
-            ]), new Fato("aspecto"=> "condimentado"),
-            // new Regra 14
-            new Fato([
-                "melhor corpo"=> "leve",
-            ]), new Fato("corpo recomendado"=> "leve"),
-            // new Regra 15
-            new Fato([
-                "melhor corpo"=> "medio",
-            ]), new Fato("corpo recomendado"=> "medio"),
-            // new Regra 16
-            new Fato([
-                "melhor corpo"=> "encorpado"
-            ]), new Fato("corpo recomendado"=> "encorpado"),
-            // new Regra 17
-            new Fato([
-                "corpo preferido"=> "leve",
-                "melhor corpo"=> "leve"
-            ], new Fato("corpo recomendado"=> "leve"), 0.20),
-            // new Regra 18
-            new Fato([
-                "corpo preferido"=> "medio",
-                "melhor corpo"=> "medio"
-            ], new Fato("corpo recomendado"=> "medio"), 0.20),
-            // new Regra 19
-            new Fato([
-                "corpo preferido"=> "encorpado",
-                "melhor corpo"=> "encorpado"
-            ], new Fato("corpo recomendado"=> "encorpado"), 0.20),
-            // new Regra 20
-            new Fato([
-                "corpo preferido"=> "leve",
-                "melhor corpo"=> "encorpado"
-            ]), new Fato("corpo recomendado"=> "medio"),
-            // new Regra 21
-            new Fato([
-                "corpo preferido"=> "encorpado",
-                "melhor corpo"=> "leve"
-            ]), new Fato("corpo recomendado"=> "medio"),
-            // new Regra 22
-            new Fato([
-                "corpo preferido"=> "leve",
-                "melhor corpo"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "leve"),
-            // new Regra 23
-            new Fato([
-                "corpo preferido"=> "medio",
-                "melhor corpo"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "medio"),
-            // new Regra 24
-            new Fato([
-                "corpo preferido"=> "encorpado",
-                "melhor corpo"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "encorpado"),
-            // new Regra 25
-            new Fato([
-                "melhor corpo"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "medio",
-            // new Regra 26
-            new Fato([
-                "melhor cor"=> "tinto"
-            ]), new Fato("corpo recomendado"=> "tinto",
-            // new Regra 27
-            new Fato([
-                "melhor corpo"=> "branco"
-            ]), new Fato("corpo recomendado"=> "branco"),
-            // new Regra 28
-            new Fato([
-                "cor preferida"=> "tinto",
-                "melhor cor"=> "tinto"
-            ], new Fato("corpo recomendado"=> "tinto"), 0.20),
-            // new Regra 29
-            new Fato([
-                "cor preferida"=> "branco",
-                "melhor cor"=> "branco"
-            ], new Fato("corpo recomendado"=> "branco"), 0.20),
-            // new Regra 30
-            new Fato([
-                "cor preferida"=> "tinto",
-                "melhor cor"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "tinto"),
-            // new Regra 31
-            new Fato([
-                "cor preferida"=> "branco",
-                "melhor cor"=> "desconhecido"
-            ]), new Fato("corpo recomendado"=> "branco"),
-            // new Regra 32
-            new Fato([
-                "cor preferida"=> "desconhecido",
-            ], new Fato("corpo recomendado"=> "branco"), 0.50
-               new Fato("corpo recomendado"=> "tinto"), 0.50),
-            // new Regra 33
-            new Fato([
-                "melhor suavidade"=> "seco",
-            ]), new Fato("suavidade recomendado"=> "seco"), 0.50,
-            // new Regra 34
-            new Fato([
-                "melhor suavidade"=> "medio",
-            ]), new Fato("suavidade recomendado"=> "medio"),
-            // new Regra 35
-            new Fato([
-                "melhor suavidade"=> "suave",
-            ]), new Fato("suavidade recomendado"=> "suave"),
-            // new Regra 36
-            new Fato([
-                "melhor suavidade"=> "desconhecido",
-                "suavidade preferida"=> "desconhecido"
-            ]), new Fato("suavidade recomendado"=> "medio"),
-            // new Regra 37
-            new Fato([
-                "melhor suavidade"=> "seco",
-                "suavidade preferida"=> "seco"
-            ], new Fato("suavidade recomendado"=> "seco"), 0.20),
-            // new Regra 38
-            new Fato([
-                "melhor suavidade"=> "medio",
-                "suavidade preferida"=> "medio"
-            ], new Fato("suavidade recomendado"=> "medio"), 0.20,
-            // new Regra 39
-            new Fato([
-                "melhor suavidade"=> "suave",
-                "suavidade preferida"=> "suave"
-            ], new Fato("suavidade recomendado"=> "suave"), 0.20,
-            // new Regra 40
-            new Fato([
-                "suavidade preferida"=> "seco",
-                "melhor suavidade"=> "desconhecido"
-            ]), new Fato("suavidade recomendado"=> "seco"),
-            // new Regra 41
-            new Fato([
-                "suavidade preferida"=> "medio",
-                "melhor suavidade"=> "desconhecido"
-            ]), new Fato("suavidade recomendado"=> "medio"),
-            // new Regra 42
-            new Fato([
-                "suavidade preferida"=> "suave",
-                "melhor suavidade"=> "desconhecido"
-            ]), new Fato("suavidade recomendado"=> "suave"),
-            // new Regra 43
-            new Fato([
-                "suavidade preferida"=> "seco",
-                "melhor suavidade"=> "suave"
-            ]), new Fato("suavidade recomendado"=> "medio"),
-            // new Regra 44
-            new Fato([
-                "suavidade preferida"=> "suave",
-                "melhor suavidade"=> "seco"
-            ]), new Fato("suavidade recomendado"=> "medio"),
-            // new Regra 45
-            new Fato([
-                "cor recomendada"=> "tinto",
-                "corpo recomnedado"=> "medio",
-                "suavidade recomendada"=> "medio",
-                "suavidade recomendada"=> "suave"
-            ]), new Fato("vinho"=> "Gamay"),
-            // new Regra 46
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomnedado"=> "leve",
-                "suavidade recomendada"=> "suave"
-            ]), new Fato("vinho"=> "Chablis"),
-            // new Regra 47
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomnedado"=> "medio",
-                "suavidade recomendada"=> "seco"
-            ]), new Fato("vinho"=> "Sauvignon Blanc"),
-            // new Regra 48
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "medio",
-                "corpo recomendado"=> "encorpado",
-                "suavidade recomendada"=> "seco",
-                "suavidade recomendada"=> "medio"
-            ]), new Fato("vinho"=> "Chardonnay"),
-            // new Regra 49
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "leve",
-                "suavidade recomendada"=> "seco",
-                "suavidade recomendada"=> "medio"
-            ]), new Fato("vinho"=> "Soave"),
-            // new Regra 50
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "leve",
-                "corpo recomendado"=> "medio",
-                "suavidade recomendada"=> "medio",
-                "suavidade recomendada"=> "suave"
-            ]), new Fato("vinho"=> "Riesling"),
-            // new Regra 51
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "encropado",
-                "aspecto"=> "condimentado"
-            ]), new Fato("vinho"=> "Geverztraminer"),
-            // new Regra 52
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "leve",
-                "suavidade recomendada"=> "medio",
-                "suavidade recomendada"=> "suave"
-            ]), new Fato("vinho"=> "Chenin Blanc"),
-            // new Regra 53
-            new Fato([
-                "cor recomendada"=> "branco",
-                "corpo recomendado"=> "medio"
-            ]), new Fato("vinho"=> "Valpolicella"),
-            // new Regra 54
-            new Fato([
-                "cor recomendada"=> "tinto",
-                "suavidade recomendada"=> "seco",
-                "suavidade recomendada"=> "medio"
-            ]), new Fato("vinho"=> "Cabernet Sauvignon"),
-                new Fato("vinho"=> "Zinfandel"),
-            // new Regra 55
-            new Fato([
-                "cor recomendada"=> "tinto",
-                "corpo recomendada"=> "medio",
-                "suavidade recomendada"=> "medio"
-            ]), new Fato("vinho"=> "Pinot Noir"),
-            // new Regra 56
-            new Fato([
-                "cor recomendada"=> "tinto",
-                "corpo recomendada"=> "encorpado"
-            ]), new Fato("vinho"=> "Burgundy"),
+            $regra_11,                          // Regra
+            $regra_12_1, $regra_12_2            // Regra
+            $regra_13,                          // Regra
+            $regra_14,                            // Regra
+            $regra_15,                            // Regra
+            $regra_16,                            // Regra
+            $regra_17,                            // Regra
+            $regra_18,                            // Regra
+            $regra_19,                            // Regra
+            $regra_20,                            // Regra
+            $regra_21,                            // Regra
+            $regra_22,                            // Regra
+            $regra_23,                            // Regra
+            $regra_24,                            // Regra
+            $regra_25,                            // Regra
+            $regra_26,                            // Regra
+            $regra_27,                            // Regra
+            $regra_28,                            // Regra
+            $regra_29,                            // Regra
+            $regra_30,                            // Regra
+            $regra_31,                            // Regra
+            $regra_32_1, $regra_32_2                 // Regra
+            $regra_33,                            // Regra
+            $regra_34,                            // Regra
+            $regra_35,                            // Regra
+            $regra_36,                            // Regra
+            $regra_37,                            // Regra
+            $regra_38,                            // Regra
+            $regra_39,                            // Regra
+            $regra_40,                            // Regra
+            $regra_41,                            // Regra
+            $regra_42,                            // Regra
+            $regra_43,                                          // Regra
+            $regra_44,                                          // Regra
+            $regra_45_1, $regra_45_2                            // Regra
+            $regra_46_1, $regra_46_2                            // Regra
+            $regra_47_1, $regra_47_2                            // Regra
+            $regra_48_1, $regra_48_2, $regra_48_3, $regra_48_4  // Regra
+            $regra_49_1, $regra_49_2                            // Regra
+            $regra_50_1, $regra_50_2, $regra_50_3, $regra_50_4  // Regra
+            $regra_51,                                          // Regra
+            $regra_52,   $regra_50_2                            // Regra
+            $regra_53,                                          // Regra
+            $regra_54,   $regra_50_2                            // Regra
+            $regra_55,                                          // Regra
+            $regra_56,                                          // Regra
+ 
         ];
     }
 }
