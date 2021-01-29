@@ -16,7 +16,7 @@ use App\Vinhos\SistemaEspecialista as SistemaEspecialistaEmVinhos;
 class SEEP
 {
     /**
-     * @var \App\Vinhos\SistemaEspecialista Sistema especialista em vinhos
+     * @var \App\Vinhos\SistemaEspecialista
      */
     private $se;
 
@@ -39,15 +39,10 @@ class SEEP
     /**
      * Busca o melhor vinho no sistema especialista.
      * 
-     * @return string
+     * @return  \App\Models\Fato  Melhor vinho
      */
     public function melhor_vinho()
     {
-        $melhor_vinho = $this->se->melhor_vinho();
-
-        if (count($melhor_vinho) === 0)
-            return "";
-
-        return $melhor_vinho[0]->valor;
+        return $this->se->melhor_vinho();
     }
 }

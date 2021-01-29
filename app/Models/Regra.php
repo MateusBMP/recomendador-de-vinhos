@@ -87,8 +87,11 @@ class Regra
                 if ($fato_esperado->igual_a($fato_passado))
                     $fatos_esperados--;
 
-        // Se número de fatos esperados igual a zero, significa que regras são igual. Senão, 
-        // retorna falso
-        return ($fatos_esperados === 0);
+        // Verifica se o novo fato esperado é igual ao fato da regra comparada
+        $novos_fatos_sao_iguais = $this->novo_fato->igual_a($regra->novo_fato);
+
+        // Se número de fatos esperados igual a zero e novos fatos das regras são iguais, então 
+        // regras são igual. Senão, retorna falso.
+        return ($fatos_esperados === 0 && $novos_fatos_sao_iguais);
     }
 }
