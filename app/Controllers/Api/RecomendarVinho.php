@@ -45,7 +45,7 @@ class RecomendarVinho extends Controller
 
         // Devolve o melhor vinho
         return [
-            'melhor-vinho' => $mv->valor,
+            'melhor_vinho' => $mv->valor,
             'confiabilidade' => $mv->probabilidade
         ];
     }
