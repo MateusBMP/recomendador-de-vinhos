@@ -156,11 +156,11 @@
                                     <p class="card-title mb-3 fw-bold">Cor preferida <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="cor_preferida">
+                                            <input class="form-check-input" type="checkbox" value="branco" v-model="corPreferida">
                                             <label class="form-check-label">Branco</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="cor_preferida">
+                                            <input class="form-check-input" type="checkbox" value="tinto" v-model="corPreferida">
                                             <label class="form-check-label">Tinto</label>
                                         </div>
                                     </div>
@@ -174,15 +174,15 @@
                                     <p class="card-title mb-3 fw-bold">Suavidade <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <input class="form-check-input" type="radio" value="suave" v-model="suavidade">
                                             <label class="form-check-label">Suave</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <input class="form-check-input" type="radio" value="medio" v-model="suavidade">
                                             <label class="form-check-label">Médio</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="suavidade">
+                                            <input class="form-check-input" type="radio" value="seco" v-model="suavidade">
                                             <label class="form-check-label">Seco</label>
                                         </div>
                                     </div>
@@ -196,15 +196,15 @@
                                     <p class="card-title mb-3 fw-bold">Corpo preferido <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <input class="form-check-input" type="radio" value="leve" v-model="corpoPreferido">
                                             <label class="form-check-label">Leve</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <input class="form-check-input" type="radio" value="medio" v-model="corpoPreferido">
                                             <label class="form-check-label">Médio</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="corpo_preferido">
+                                            <input class="form-check-input" type="radio" value="encorpado" v-model="corpoPreferido">
                                             <label class="form-check-label">Encorpado</label>
                                         </div>
                                     </div>
@@ -218,15 +218,15 @@
                                     <p class="card-title mb-3 fw-bold">Sabor <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <input class="form-check-input" type="checkbox" value="delicado" v-model="sabor">
                                             <label class="form-check-label">Delicado</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <input class="form-check-input" type="checkbox" value="medio" v-model="sabor">
                                             <label class="form-check-label">Médio</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sabor">
+                                            <input class="form-check-input" type="checkbox" value="forte" v-model="sabor">
                                             <label class="form-check-label">Forte</label>
                                         </div>
                                     </div>
@@ -237,26 +237,26 @@
                             <div class="card rounded-3">
                                 <div class="card-img-top card-bar"></div>
                                 <div class="card-body px-4 pt-3 pb-4">
-                                    <p class="card-title mb-3 fw-bold">Molho <span class="text-marsala small align-top">*</span></p>
+                                    <p class="card-title mb-3 fw-bold">Molho</p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <input class="form-check-input" type="checkbox" value="agridoce" v-model="molho">
                                             <label class="form-check-label">Agridoce</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <input class="form-check-input" type="checkbox" value="creme" v-model="molho">
                                             <label class="form-check-label">Creme</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <input class="form-check-input" type="checkbox" value="tartaro" v-model="molho">
                                             <label class="form-check-label">Tártaro</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <input class="form-check-input" type="checkbox" value="apimentado" v-model="molho">
                                             <label class="form-check-label">Apimentado</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="molho">
+                                            <input class="form-check-input" type="checkbox" value="tomate" v-model="molho">
                                             <label class="form-check-label">Tomate</label>
                                         </div>
                                     </div>
@@ -270,15 +270,15 @@
                                     <p class="card-title mb-3 fw-bold">Prato principal <span class="text-marsala small align-top">*</span></p>
                                     <div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <input class="form-check-input" type="radio" value="peixe" v-model="pratoPrincipal">
                                             <label class="form-check-label">Peixe</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <input class="form-check-input" type="radio" value="carne" v-model="pratoPrincipal">
                                             <label class="form-check-label">Carne</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="prato_principal">
+                                            <input class="form-check-input" type="radio" value="aves" v-model="pratoPrincipal">
                                             <label class="form-check-label">Aves</label>
                                         </div>
                                     </div>
@@ -286,8 +286,48 @@
                             </div>
                         </div>
                         <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Tem peru <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="sim" v-model="temPeru">
+                                            <label class="form-check-label">Sim</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="nao" v-model="temPeru">
+                                            <label class="form-check-label">Não</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card rounded-3">
+                                <div class="card-img-top card-bar"></div>
+                                <div class="card-body px-4 pt-3 pb-4">
+                                    <p class="card-title mb-3 fw-bold">Tem vitela <span class="text-marsala small align-top">*</span></p>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="sim" v-model="temVitela">
+                                            <label class="form-check-label">Sim</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="nao" v-model="temVitela">
+                                            <label class="form-check-label">Não</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
                             <div class="d-grid gap-2 d-md-block">
-                                <a href="#" class="btn btn-dark" role="button">Buscar vinho</a>
+                                <button type="button" class="btn btn-dark" v-on:click="buscarVinho">Buscar vinho</button>
+                                <p class="ms-md-2 small d-md-inline d-block">
+                                    <span class="text-marsala small">*</span> 
+                                    <span>required</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -316,27 +356,36 @@
         var app = new Vue({
             el: '#app',
             data: {
-                selecionados: null
+                corpoPreferido: null,
+                corPreferida: [],
+                molho: [],
+                pratoPrincipal: null,
+                sabor: [],
+                suavidade: null,
+                temPeru: null,
+                temVitela: null
             },
-            methods: {
-                combinarVinho: function(event) {
-                    axios
-                        .post('api/recomendar-vinho', {
-                            'cor-preferida': this.pickedCorPreferida,
-                            'corpo-preferido': this.pickedCorpoPreferido,
-                            'molho': this.pickedMolho,
-                            'prato-principal': this.pickedPratoPrincipal,
-                            'sabor': this.pickedSabor,
-                            'suavidade-preferida': this.pickedSuavidadePreferida,
-                            'tem-molho': this.pickedTemMolho,
-                            'tem-peru': this.pickedTemPeru,
-                            'tem-vitela': this.pickedTemVitela,
-                        })
-                        .then(response => (console.info(response)));
+            computed: {
+                temMolho: function () {
+                    return (this.molho.length > 0);
                 }
             },
-            mounted () {
-                // ...
+            methods: {
+                buscarVinho: function(event) {
+                    axios
+                        .post('api/recomendar-vinho/', {
+                            'corpo-preferido': this.corpoPreferido,
+                            'cor-preferida': this.corPreferida,
+                            'molho': this.molho,
+                            'prato-principal': this.pratoPrincipal,
+                            'sabor': this.sabor,
+                            'suavidade-preferida': this.suavidade,
+                            'tem-molho': this.temMolho,
+                            'tem-peru': this.temPeru,
+                            'tem-vitela': this.temVitela,
+                        })
+                        .then(response => (console.info(response.data)));
+                }
             }
         });
     </script>

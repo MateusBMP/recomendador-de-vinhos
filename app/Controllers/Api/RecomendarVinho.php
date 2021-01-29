@@ -10,12 +10,31 @@ class RecomendarVinho extends Controller
 {
     public function data() 
     {
-        print_r(file_get_contents('php://input'));
+        $json_data = json_decode(file_get_contents('php://input'));
 
         // Cria a lista de fatos a partir da resposta do cliente no formulário
-        $fatos = [
-            new Fato("", ""),
-        ];
+        $fatos = [];
+
+        array_push($fatos, new Fato([ 'nome' => 'corpo preferido', 'valor' => $json_data['corpo-preferido'] ]));
+
+        foreach ($json_data['cor-preferida'] as $cor_preferida)
+            array_push($fatos, new Fato([ 'nome' => 'cor preferida', 'valor' => $cor_preferida ]));
+
+        foreach ($json_data['molho'] as $molho)
+            array_push($fatos, new Fato([ 'nome' => 'molho', 'valor' => $molho ]));
+
+        array_push($fatos, new Fato([ 'nome' => 'prato principal', 'valor' => $json_data['prato-principal'] ]));
+
+        foreach ($json_data['sabor'] as $sabor)
+            array_push($fatos, new Fato([ 'nome' => 'sabor', 'valor' => $sabor ]));
+
+        array_push($fatos, new Fato([ 'nome' => 'suavidade preferida', 'valor' => $json_data['suavidade-preferida'] ]));
+
+        array_push($fatos, new Fato([ 'nome' => 'tem molho', 'valor' => $json_data['tem-molho'] ]));
+
+        array_push($fatos, new Fato([ 'nome' => 'tem peru', 'valor' => $json_data['tem-peru'] ]));
+        
+        array_push($fatos, new Fato([ 'nome' => 'tem vitela', 'valor' => $json_data['tem-vitela'] ]));
 
         // Constrói o sistema especialista que encontrará o melhor vinho a partir da resposta do 
         // cliente ao formulário
@@ -23,7 +42,7 @@ class RecomendarVinho extends Controller
 
         // Devolve o melhor vinho
         return [
-            'melhor_vinho' => $se->melhor_vinho()
+            'melhor-vinho' => $se->melhor_vinho()
         ];
     }
 }
