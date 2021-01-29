@@ -300,7 +300,7 @@ class Regras
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
 
-        // corpo_preferido(encorpado) 
+        // corpo_preferido(encorpado) ^ melhor_corpo(desconhecido) -> corpo_recomendado(encorpado) cnf 100%
         $regra_24 = new Regra(
             [
                 new Fato([ 'nome' => 'corpo preferido', 'valor' => 'encorpado' ]),
@@ -308,24 +308,32 @@ class Regras
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'encorpado'])
         );
+
+        // melhor_corpo(desconhecido) -> corpo_recomendado(medio) cnf 100%
         $regra_25 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor corpo', 'valor' => 'desconhecido' ]),
             ],
             new Fato([ 'nome' => 'corpo recomendado', 'valor' => 'medio'])
         );
+
+        // melhor_cor(tinto) -> cor_recomendada(tinto) cnf 100%
         $regra_26 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor cor', 'valor' => 'tinto' ]),
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto'])
         );
+
+        //melhor_cor(branco) -> cor_recomendada(branco) cnf 100%
         $regra_27 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor cor', 'valor' => 'branco' ]),
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco'])
         );
+
+        // cor_preferida(tinto) ^ melhor_cor(tinto) -> cor_recomendada(tinto) cnf 20%
         $regra_28 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'tinto' ]),
@@ -333,6 +341,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto', 'probabilidade' => 0.20])
         );
+
+        // cor_preferida(branco) ^ melhor_cor(branco) -> cor_recomendada(branco) cnf 20%
         $regra_29 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'branco' ]),
@@ -340,6 +350,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco', 'probabilidade' => 0.20])
         );
+
+        // cor_preferida(tinto) ^ melhor_cor(tinto) -> cor_recomendada(tinto)
         $regra_30 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'tinto' ]),
@@ -347,6 +359,8 @@ class Regras
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto'])
         );
+
+        // cor_preferida(banco) ^ melhor_cor(desconhecido) -> cor_recomendada(banco)
         $regra_31 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'branco' ]),
@@ -354,36 +368,48 @@ class Regras
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco'])
         );
+
+        //cor_preferida(desconhecido) -> cor_recomendada(branco) cnf 50%
         $regra_32_1 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'desconhecido' ]),
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'branco', 'probabilidade' => 0.50])
         );
+
+        //cor_preferida(desconhecido) -> cor_recomendada(tinto) cnf 50%
         $regra_32_2 = new Regra(
             [
                 new Fato([ 'nome' => 'cor preferida', 'valor' => 'desconhecido' ]),
             ],
             new Fato([ 'nome' => 'cor recomendada', 'valor' => 'tinto', 'probabilidade' => 0.50])
         );
+
+        // suavidade(seco) -> suavidade_recomendada(seco)
         $regra_33 = new Regra(
             [
                 new Fato([ 'nome' => 'suavidade', 'valor' => 'seco' ]),
             ],
             new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco'])
         );
+
+        // suavidade(medio) -> suavidade
         $regra_34 = new Regra(
             [
                 new Fato([ 'nome' => 'suavidade', 'valor' => 'medio' ]),
             ],
             new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
         );
+
+        // melhor_suavidade(suave) -> suavidade_recomendada(suave) cnf 100%
         $regra_35 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'suave' ]),
             ],
             new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'suave'])
         );
+
+        // melhor_suavidade(desconhecido) ^ suavidade_preferida(desconhecido) -> suavidade_recomendada(medio) cnf 100%
         $regra_36 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'desconhecido' ]),
@@ -391,13 +417,17 @@ class Regras
             ],
             new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'medio'])
         );
+
+        // melhor_suavidade(seco) ^ suavidade_preferida(seco) -> suavidade_recomendada(seco) cnf 100%
         $regra_37 = new Regra(
             [
-                new Fato([ 'nome' => 'çmelhor suavidade', 'valor' => 'seco' ]),
+                new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'seco' ]),
                 new Fato([ 'nome' => 'suavidade preferida', 'valor' => 'seco' ])
             ],
             new Fato([ 'nome' => 'suavidade recomendada', 'valor' => 'seco'])
         );
+
+        // melhor_suavidade(medio) ^ suavidade_preferida(medio) -> suavidade_recomendada(medio) cnd 20%
         $regra_38 = new Regra(
             [
                 new Fato([ 'nome' => 'melhor suavidade', 'valor' => 'medio' ]),
