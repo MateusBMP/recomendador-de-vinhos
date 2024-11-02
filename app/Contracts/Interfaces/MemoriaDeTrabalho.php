@@ -35,4 +35,11 @@ interface MemoriaDeTrabalho
      * @param \App\Models\Fato $fato Novo fato a ser adicionado a memória de trabalho
      */
     public function adicionar_fato(Fato $fato);
+
+    /**
+     * Remove um fato da memória de trabalho.
+     * 
+     * @param \App\Models\Fato $fato Fato a ser removido da memória de trabalho
+     */
+    public function remover_fato(string $nome_fato, string $valor_fato);
 }
